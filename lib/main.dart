@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'weather.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fleather',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -24,6 +25,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void getLocationData() async {
+    WeatherModel weatherModel = WeatherModel();
+
+    var weatherData = await weatherModel.getWeatherData();
+    String country = weatherData['sys']['country'];
+    String city = weatherData['name'];
+    double temp = weatherData['main']['temp'];
+    String description = weatherData['weather'][0]['description'];
+    print(weatherData);
+    print(temp);
+    print(description);
+    print(country);
+    print(city);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Hello world',
+              'Fleather',
               style: Theme.of(context).textTheme.display1,
             ),
           ],
@@ -43,9 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
+          getLocationData();
         },
-        tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
     );
