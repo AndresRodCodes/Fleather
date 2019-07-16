@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -45,43 +45,65 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          SafeArea(
-              child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Container(
-              color: Colors.lightBlueAccent,
-              height: 400.0,
-              child: ListView.builder(
-                  itemCount: 7,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Card(
-                        color: Colors.yellow,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text('Los Angeles'),
-                              Text('Sunny'),
-                              Text('100 Degrees'),
-                            ],
-                          ),
-                        ),
-                      )),
-            ),
-          )),
+          SizedBox(height: 100.0),
           Row(
             children: <Widget>[
-              Center(
-                child: Container(
-                  child: RaisedButton(
-                    onPressed: () {},
-                    child: Text('Get Location'),
+              Column(children: <Widget>[
+                Center(
+                  child: Text(
+                    'City Name',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 34,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
+                Center(
+                  child: Text(
+                    'Cloudy with a chance of rain',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ]),
             ],
-          )
+          ),
+          SizedBox(
+            height: 40.0,
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                color: Colors.lightBlueAccent,
+                height: 250.0,
+                child: ListView.builder(
+                    itemCount: 3,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => Card(
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.wb_sunny),
+                                Text(
+                                  'Los Angeles',
+                                ),
+                                Text('Sunny'),
+                                Text('100 Degrees'),
+                              ],
+                            ),
+                          ),
+                        )),
+              ),
+            ),
+          ),
         ],
       ),
     );
