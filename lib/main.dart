@@ -38,44 +38,43 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           SizedBox(height: 50.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Column(children: <Widget>[
+          Column(children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Time',
+                  style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Text(
-                      'Time',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Icon(Icons.terrain),
-                    Text(
-                      '95°',
-                      textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ],
+                  Icon(
+                    Icons.terrain,
+                  ),
+                  Text(
+                    '95°',
+                    style: TextStyle(fontSize: 40),
+                  ),
+                ],)
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Text(
+                  'Date, | Location ',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'Date, | Location ',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ]),
-            ],
-          ),
+              ],
+            ),
+          ]),
           SizedBox(
             height: 40.0,
           ),
