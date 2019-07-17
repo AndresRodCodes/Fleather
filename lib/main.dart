@@ -26,14 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,29 +37,41 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          SizedBox(height: 100.0),
+          SizedBox(height: 50.0),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Column(children: <Widget>[
-                Center(
-                  child: Text(
-                    'City Name',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 34,
-                      color: Colors.white,
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'Time',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
+                    Icon(Icons.terrain),
+                    Text(
+                      '95°',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(fontSize: 40),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Text(
-                    'Cloudy with a chance of rain',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Date, | Location ',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ]),
             ],
@@ -80,23 +84,23 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(5.0),
               child: Container(
                 color: Colors.lightBlueAccent,
-                height: 250.0,
+                height: 150.0,
                 child: ListView.builder(
-                    itemCount: 3,
+                    itemCount: 6,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => Card(
                           color: Colors.white,
                           child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Icon(Icons.wb_sunny),
                                 Text(
-                                  'Los Angeles',
+                                  'degrees',
                                 ),
-                                Text('Sunny'),
-                                Text('100 Degrees'),
+                                Text('ICON'),
+                                Text('Time'),
                               ],
                             ),
                           ),
@@ -105,6 +109,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.location_on,
+                size: 50,
+                color: Colors.blueGrey,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
