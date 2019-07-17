@@ -1,5 +1,6 @@
 import 'networking.dart';
 import 'location.dart';
+import 'package:flutter/material.dart';
 
 const apiKey = 'beb51bdbd795166fe74622b9bce3603d';
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
@@ -14,5 +15,20 @@ class WeatherModel {
     NetworkHelper networkHelper = NetworkHelper(url: url);
     var weatherData = await networkHelper.getData();
     return weatherData;
+  }
+
+  AssetImage getBackgroundImage(String weatherCondition) {
+    if (weatherCondition == 'Clear') {
+      return AssetImage('images/clear.jpg');
+
+    } else if (weatherCondition == 'Rain') {
+      return AssetImage('images/rain.jpg');
+
+    } else if (weatherCondition == 'Clouds') {
+      return AssetImage('images/clouds.jpg');
+    }
+    else {
+      return AssetImage('images/rain.jpg');
+    }
   }
 }
