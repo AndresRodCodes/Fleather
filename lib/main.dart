@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'time.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,10 +27,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  DateAndTime time = DateAndTime();
 
-  void getCurrentTime() {
-    var currentTime = DateTime.now();
-    print(currentTime);
+  @override
+  void initState() {
+    super.initState();
+    time.getCurrentTimeAndDate();
   }
 
   @override
@@ -47,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Time',
+                  '${time.time}',
                   style: TextStyle(
                     fontSize: 35,
                     color: Colors.white,
@@ -70,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: <Widget>[
                 Text(
-                  'Date, | Location ',
+                  '${time.date} | Location ',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 20,
@@ -126,7 +129,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.blueGrey,
               ), onPressed: () {
                 print('Implement on pressed function');
-                getCurrentTime();
             },
             )
           ],
