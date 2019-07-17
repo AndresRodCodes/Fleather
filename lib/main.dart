@@ -26,6 +26,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  void getCurrentTime() {
+    var currentTime = DateTime.now();
+    print(currentTime);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.blueGrey,
               ), onPressed: () {
                 print('Implement on pressed function');
+                getCurrentTime();
             },
             )
           ],
