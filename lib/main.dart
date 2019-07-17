@@ -31,8 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Column(
@@ -110,16 +108,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: new Row(
+        child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             IconButton(
+              padding: EdgeInsets.only(bottom: 5.0),
               icon: Icon(
                 Icons.location_on,
                 size: 50,
                 color: Colors.blueGrey,
-              ),
+              ), onPressed: () {
+                print('Implement on pressed function');
+            },
             )
           ],
         ),
