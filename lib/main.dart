@@ -105,6 +105,72 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          SizedBox(
+            height: 50.0,
+          ),
+          Container(
+            height: 200,
+//color: Colors.yellow,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Rain: ',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'Feel: ',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'Wind: ',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          'UV: ',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'HUMI: ',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Cloud: ',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -118,9 +184,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.location_on,
                 size: 50,
                 color: Colors.blueGrey,
-              ), onPressed: () {
+              ),
+              onPressed: () {
                 print('Implement on pressed function');
-            },
+              },
             )
           ],
         ),
