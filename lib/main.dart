@@ -52,14 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                  Icon(
-                    Icons.terrain,
-                  ),
-                  Text(
-                    '95°',
-                    style: TextStyle(fontSize: 40),
-                  ),
-                ],)
+                    Icon(
+                      Icons.terrain,
+                    ),
+                    Text(
+                      '95°',
+                      style: TextStyle(fontSize: 40),
+                    ),
+                  ],
+                )
               ],
             ),
             Column(
@@ -94,11 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Icon(Icons.wb_sunny),
                                 Text(
                                   'degrees',
                                 ),
-                                Text('ICON'),
+                                Icon(Icons.wb_sunny),
                                 Text('Time'),
                               ],
                             ),
