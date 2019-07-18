@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Image weatherIcon;
   String temperature;
 
-  void getWeatherData() async{
+  void getWeatherData() async {
     var weatherData = await weatherModel.getWeatherData();
 
     setState(() {
@@ -44,11 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
-      temperature = temp.toString();
-
-
+      temperature = temp.toStringAsFixed(1);
     });
-    weatherIcon = Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
+    weatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
   }
 
   @override
@@ -68,7 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: weatherModel.getBackgroundImage(weatherCondition), fit: BoxFit.cover),
+              image: weatherModel.getBackgroundImage(weatherCondition),
+              fit: BoxFit.cover),
         ),
         child: Column(
           children: <Widget>[
@@ -93,7 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Text(
                         '$temperature°',
-                        style: TextStyle(fontSize: 40,
+                        style: TextStyle(
+                          fontSize: 40,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
                         ),
@@ -219,25 +220,25 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            IconButton(
-              padding: EdgeInsets.only(bottom: 5.0),
-              icon: Icon(
-                Icons.location_on,
-                size: 50,
-                color: Colors.blueGrey,
-              ),
-              onPressed: () {
-                print('Implement on pressed function');
-              },
-            )
-          ],
-        ),
-      ),
+//      bottomNavigationBar: BottomAppBar(
+//        child: Row(
+//          mainAxisSize: MainAxisSize.max,
+//          mainAxisAlignment: MainAxisAlignment.start,
+//          children: <Widget>[
+//            IconButton(
+//              padding: EdgeInsets.only(bottom: 5.0),
+//              icon: Icon(
+//                Icons.location_on,
+//                size: 50,
+//                color: Colors.blueGrey,
+//              ),
+//              onPressed: () {
+//                print('Implement on pressed function');
+//              },
+//            )
+//          ],
+//        ),
+//      ),
     );
   }
 }
