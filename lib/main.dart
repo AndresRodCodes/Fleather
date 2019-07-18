@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ]),
           SizedBox(
-            height: 40.0,
+            height: 30.0,
           ),
           SafeArea(
             child: Padding(
@@ -115,70 +115,66 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           SizedBox(
-            height: 50.0,
+            height: 30.0,
           ),
-          Container(
-            height: 200,
-//color: Colors.yellow,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'Rain: ',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                      ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Rain: ',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
                     ),
-                    Text(
-                      'Feel: ',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                      ),
+                  ),
+                  Text(
+                    'Feel: ',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
                     ),
-                    Text(
-                      'Wind: ',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
+                  ),
+                  Text(
+                    'Wind: ',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        'UV: ',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                        ),
                       ),
-                    )
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'UV: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
+                      Text(
+                        'HUMI: ',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
                         ),
-                        Text(
-                          'HUMI: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
+                      ),
+                      Text(
+                        'Cloud: ',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
                         ),
-                        Text(
-                          'Cloud: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ],
-            ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
           )
         ],
       ),
