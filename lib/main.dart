@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Image weatherIcon;
   String temperature;
 
-  void getWeatherData() async {
+  void getWeatherData() async{
     var weatherData = await weatherModel.getWeatherData();
 
     setState(() {
@@ -45,9 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
       temperature = temp.toStringAsFixed(1);
+
+
     });
-    weatherIcon =
-        Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
+    weatherIcon = Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
   }
 
   @override
