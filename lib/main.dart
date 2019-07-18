@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   '${time.time}',
                   style: TextStyle(
+                    fontFamily: 'Righteous',
                     fontSize: 35,
                     color: Colors.white,
                   ),
@@ -59,12 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Icon(
-                      Icons.terrain,
-                    ),
+                    Icon(Icons.terrain),
                     Text(
                       '95°',
-                      style: TextStyle(fontSize: 40),
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontFamily: 'Righteous',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 )
@@ -76,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   '${time.date} | Location ',
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontFamily: 'Righteous',
+                    fontSize: 25,
                     color: Colors.white,
                   ),
                 ),
@@ -90,7 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: Container(
-                color: Colors.lightBlueAccent,
                 height: 150.0,
                 child: ListView.builder(
                     itemCount: 6,
@@ -116,6 +119,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SizedBox(
             height: 30.0,
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.wb_cloudy,
+                size: 50,
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
