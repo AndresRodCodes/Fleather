@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String weatherCondition;
   String icon;
   Image weatherIcon;
+  String temperature;
 
   void getWeatherData() async{
     var weatherData = await weatherModel.getWeatherData();
@@ -42,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
       city = weatherData['name'];
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
+      double temp = weatherData['main']['temp'];
+      temperature = temp.toString();
 
 
     });
@@ -89,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: weatherIcon,
                       ),
                       Text(
-                        '95°',
+                        '$temperature°',
                         style: TextStyle(fontSize: 40,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
