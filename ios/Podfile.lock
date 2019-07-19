@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - geolocator (5.0.1):
+  - geolocator (5.1.0):
     - Flutter
   - google_api_availability (2.0.1):
     - Flutter
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
-  geolocator: f3dd3b5b1761a15a4da00665774c5a8319e657d6
+  geolocator: d26e51a2ef57fa8a97a2630772f41206ebb9f9c9
   google_api_availability: 163b30f802e6148c67f092aa4501c90ddd8eec8d
   location_permissions: 67cfaff583afbb027a9f9248196f4b79c40f3cdc
 

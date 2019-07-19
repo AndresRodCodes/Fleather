@@ -10,9 +10,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fleather',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: MyHomePage(title: 'Fleather'),
     );
   }
@@ -36,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Image weatherIcon;
   String temperature;
 
-  void getWeatherData() async{
+  void getWeatherData() async {
     var weatherData = await weatherModel.getWeatherData();
 
     setState(() {
@@ -45,10 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
       temperature = temp.toStringAsFixed(1);
-
-
     });
-    weatherIcon = Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
+    weatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
   }
 
   @override
@@ -61,9 +57,39 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        title: Row(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                widget.title,
+                style: TextStyle(
+                  fontFamily: 'Paytone One',
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+                size: 40,
+              ),
+              onPressed: () {
+                print('Menu Opened');
+              },
+            ),
+          )
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -78,12 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    '${time.time}',
-                    style: TextStyle(
-                      fontFamily: 'Righteous',
-                      fontSize: 35,
-                      color: Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      '${time.time}',
+                      style: TextStyle(
+                        fontFamily: 'Righteous',
+                        fontSize: 35,
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Row(
@@ -95,7 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text(
                         '$temperature°',
                         style: TextStyle(
-                          fontSize: 40,
+                          color: Colors.blue,
+                          fontSize: 50,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
                         ),
@@ -119,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ]),
             SizedBox(
-              height: 30.0,
+              height: 45.0,
             ),
             SafeArea(
               child: Padding(
@@ -148,9 +179,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 30.0,
-            ),
             Column(
               children: <Widget>[
                 Icon(
@@ -169,6 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     ),
                     Text(
@@ -176,6 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     ),
                     Text(
@@ -183,6 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     )
                   ],
@@ -196,6 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                         Text(
@@ -203,6 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                         Text(
@@ -210,6 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                       ],
