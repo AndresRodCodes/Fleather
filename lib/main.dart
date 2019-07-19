@@ -5,7 +5,6 @@ import 'weather.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,13 +88,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Container(
-                        child: weatherIcon,
-                      ),
                       Text(
                         '$temperature°',
                         style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 50,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
                         ),
@@ -153,9 +149,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Column(
               children: <Widget>[
-                Icon(
-                  Icons.wb_cloudy,
-                  size: 50,
+                Container(
+                  child: weatherIcon,
                 ),
               ],
             ),
