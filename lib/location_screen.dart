@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
+import 'loading_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,21 +13,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Fleather'),
+      home: LoadingScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class LocationScreen extends StatefulWidget {
+  LocationScreen({this.locationWeather});
 
-  final String title;
+  final locationWeather;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LocationScreenState createState() => _LocationScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LocationScreenState extends State<LocationScreen> {
   DateAndTime time = DateAndTime();
   WeatherModel weatherModel = WeatherModel();
   String city;
@@ -35,26 +36,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Image weatherIcon;
   String temperature;
 
-  void getWeatherData() async{
-    var weatherData = await weatherModel.getWeatherData();
-
+  void updateUI(dynamic weatherData) async {
     setState(() {
       city = weatherData['name'];
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
       temperature = temp.toStringAsFixed(1);
-
-
     });
-    weatherIcon = Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
+    weatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
   }
 
   @override
   void initState() {
     super.initState();
     time.getCurrentTimeAndDate();
-    getWeatherData();
+    updateUI(widget.locationWeather);
   }
 
   @override
@@ -62,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Fleather'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -220,25 +218,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-//      bottomNavigationBar: BottomAppBar(
-//        child: Row(
-//          mainAxisSize: MainAxisSize.max,
-//          mainAxisAlignment: MainAxisAlignment.start,
-//          children: <Widget>[
-//            IconButton(
-//              padding: EdgeInsets.only(bottom: 5.0),
-//              icon: Icon(
-//                Icons.location_on,
-//                size: 50,
-//                color: Colors.blueGrey,
-//              ),
-//              onPressed: () {
-//                print('Implement on pressed function');
-//              },
-//            )
-//          ],
-//        ),
-//      ),
     );
   }
 }
