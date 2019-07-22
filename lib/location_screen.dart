@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
+import 'loading_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,21 +10,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fleather',
-      home: MyHomePage(title: 'Fleather'),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: LoadingScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class LocationScreen extends StatefulWidget {
+  LocationScreen({this.locationWeather});
 
-  final String title;
+  final locationWeather;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LocationScreenState createState() => _LocationScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LocationScreenState extends State<LocationScreen> {
   DateAndTime time = DateAndTime();
   WeatherModel weatherModel = WeatherModel();
   String city;
@@ -32,15 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Image weatherIcon;
   String temperature;
 
-  void getWeatherData() async {
-    var weatherData = await weatherModel.getWeatherData();
-
+  void updateUI(dynamic weatherData) async {
     setState(() {
       city = weatherData['name'];
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
-      temperature = temp.toStringAsFixed(1);
+      temperature = temp.toStringAsFixed(0);
     });
     weatherIcon =
         Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
@@ -50,45 +52,23 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     time.getCurrentTimeAndDate();
-    getWeatherData();
+    updateUI(widget.locationWeather);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Row(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                widget.title,
-                style: TextStyle(
-                  fontFamily: 'Paytone One',
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
+        title: Text(
+          'Fleather',
+          style: TextStyle(
+            fontFamily: 'Paytone One',
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-                size: 40,
-              ),
-              onPressed: () {
-                print('Menu Opened');
-              },
-            ),
-          )
-        ],
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -103,16 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      '${time.time}',
-                      style: TextStyle(
-                        fontFamily: 'Righteous',
-                        fontSize: 35,
-                        color: Colors.lightBlue,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    '${time.time}',
+                    style: TextStyle(
+                      fontFamily: 'Righteous',
+                      fontSize: 50,
+                      color: Colors.white,
                     ),
                   ),
                   Row(
@@ -121,8 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text(
                         '$temperature°',
                         style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 50,
+                          fontSize: 90,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
                         ),
@@ -133,12 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Column(
                 children: <Widget>[
+                  SizedBox(height: 20.0),
                   Text(
                     '${time.date} | $city ',
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontFamily: 'Righteous',
-                      fontSize: 20,
+                      fontSize: 25,
                       color: Colors.white,
                     ),
                   ),
@@ -146,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ]),
             SizedBox(
-              height: 45.0,
+              height: 10.0,
             ),
             SafeArea(
               child: Padding(
@@ -174,6 +150,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           )),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 30.0,
             ),
             Column(
               children: <Widget>[
@@ -250,25 +229,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-//      bottomNavigationBar: BottomAppBar(
-//        child: Row(
-//          mainAxisSize: MainAxisSize.max,
-//          mainAxisAlignment: MainAxisAlignment.start,
-//          children: <Widget>[
-//            IconButton(
-//              padding: EdgeInsets.only(bottom: 5.0),
-//              icon: Icon(
-//                Icons.location_on,
-//                size: 50,
-//                color: Colors.blueGrey,
-//              ),
-//              onPressed: () {
-//                print('Implement on pressed function');
-//              },
-//            )
-//          ],
-//        ),
-//      ),
     );
   }
 }
