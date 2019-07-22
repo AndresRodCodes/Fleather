@@ -42,7 +42,7 @@ class _LocationScreenState extends State<LocationScreen> {
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
       double temp = weatherData['main']['temp'];
-      temperature = temp.toStringAsFixed(1);
+      temperature = temp.toStringAsFixed(0);
     });
     weatherIcon =
         Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
@@ -60,7 +60,15 @@ class _LocationScreenState extends State<LocationScreen> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        title: Text('Fleather'),
+        title: Text(
+          'Fleather',
+          style: TextStyle(
+            fontFamily: 'Paytone One',
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -79,20 +87,17 @@ class _LocationScreenState extends State<LocationScreen> {
                     '${time.time}',
                     style: TextStyle(
                       fontFamily: 'Righteous',
-                      fontSize: 35,
+                      fontSize: 50,
                       color: Colors.white,
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Container(
-                        child: weatherIcon,
-                      ),
                       Text(
                         '$temperature°',
                         style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 90,
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
                         ),
@@ -103,12 +108,13 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
               Column(
                 children: <Widget>[
+                  SizedBox(height: 20.0),
                   Text(
                     '${time.date} | $city ',
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontFamily: 'Righteous',
-                      fontSize: 20,
+                      fontSize: 25,
                       color: Colors.white,
                     ),
                   ),
@@ -116,7 +122,7 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
             ]),
             SizedBox(
-              height: 30.0,
+              height: 10.0,
             ),
             SafeArea(
               child: Padding(
@@ -150,9 +156,8 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             Column(
               children: <Widget>[
-                Icon(
-                  Icons.wb_cloudy,
-                  size: 50,
+                Container(
+                  child: weatherIcon,
                 ),
               ],
             ),

@@ -19,9 +19,9 @@ class WeatherModel {
 
   AssetImage getBackgroundImage(String weatherCondition) {
     if (weatherCondition == 'Clear') {
-      return AssetImage('images/clear.jpg');
+      return AssetImage('images/clouds.jpg');
     } else if (weatherCondition == 'Rain') {
-      return AssetImage('images/rain.jpg');
+      return AssetImage('images/clouds.jpg');
     } else if (weatherCondition == 'Clouds') {
       return AssetImage('images/clouds.jpg');
     } else {

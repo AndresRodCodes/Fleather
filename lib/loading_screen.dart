@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'weather.dart';
 import 'location_screen.dart';
+import 'location.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-
     getLocationData();
   }
 
