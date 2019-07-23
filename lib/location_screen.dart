@@ -38,10 +38,10 @@ class _LocationScreenState extends State<LocationScreen> {
       var minTempNum = weatherData['main']['temp_min'];
       minTemp = minTempNum.toStringAsFixed(0);
 
-      double maxTempNum = weatherData['main']['temp_max'];
+      var maxTempNum = weatherData['main']['temp_max'];
       maxTemp = maxTempNum.toStringAsFixed(0);
 
-      double windSpeedNum = weatherData['wind']['speed'];
+      var windSpeedNum = weatherData['wind']['speed'];
       windSpeed = windSpeedNum.round().toString();
 
       weatherDescription = weatherData['weather'][0]['description'];
