@@ -1,7 +1,7 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:location_permissions/location_permissions.dart';
 
 class Location {
+
   double latitude;
   double longitude;
 

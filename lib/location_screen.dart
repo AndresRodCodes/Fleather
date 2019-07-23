@@ -5,9 +5,10 @@ import 'time.dart';
 import 'weather.dart';
 
 class LocationScreen extends StatefulWidget {
-  LocationScreen({this.locationWeather});
+  LocationScreen({this.locationWeather, this.locationForecast});
 
   final locationWeather;
+  final locationForecast;
 
   @override
   _LocationScreenState createState() => _LocationScreenState();
@@ -184,7 +185,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 Column(
                   children: <Widget>[
                     Text(
-                      'Humidity: $humidity',
+                      'Humidity: $humidity%',
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
