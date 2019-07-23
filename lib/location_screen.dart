@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
@@ -14,6 +16,7 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   DateAndTime time = DateAndTime();
   WeatherModel weatherModel = WeatherModel();
+  Timer _everySecond;
   String city;
   String weatherCondition;
   String icon;
@@ -53,7 +56,13 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
     super.initState();
+
     time.getCurrentTimeAndDate();
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        time.getCurrentTimeAndDate();
+      });
+    });
     updateUI(widget.locationWeather);
   }
 
