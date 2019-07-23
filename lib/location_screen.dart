@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
-import 'loading_screen.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fleather',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoadingScreen(),
-    );
-  }
-}
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather});
@@ -58,7 +42,7 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           'Fleather',
