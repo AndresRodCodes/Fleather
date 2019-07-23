@@ -19,14 +19,32 @@ class _LocationScreenState extends State<LocationScreen> {
   String icon;
   Image weatherIcon;
   String temperature;
+  String humidity;
+  String minTemp;
+  String maxTemp;
+  String windSpeed;
+  String weatherDescription;
 
-  void updateUI(dynamic weatherData) async {
+  void updateUI(dynamic weatherData) {
     setState(() {
       city = weatherData['name'];
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
+
       double temp = weatherData['main']['temp'];
       temperature = temp.toStringAsFixed(0);
+      humidity = weatherData['main']['humidity'].toString();
+
+      var minTempNum = weatherData['main']['temp_min'];
+      minTemp = minTempNum.toStringAsFixed(0);
+
+      double maxTempNum = weatherData['main']['temp_max'];
+      maxTemp = maxTempNum.toStringAsFixed(0);
+
+      double windSpeedNum = weatherData['wind']['speed'];
+      windSpeed = windSpeedNum.round().toString();
+
+      weatherDescription = weatherData['weather'][0]['description'];
     });
     weatherIcon =
         Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
@@ -67,42 +85,55 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    '${time.time}',
-                    style: TextStyle(
-                      fontFamily: 'Righteous',
-                      fontSize: 50,
-                      color: Colors.white,
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      '${time.time}',
+                      style: TextStyle(
+                        fontFamily: 'Righteous',
+                        fontSize: 50,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text(
-                        '$temperature°',
-                        style: TextStyle(
-                          fontSize: 90,
-                          fontFamily: 'Righteous',
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Text(
+                          '$temperature°',
+                          style: TextStyle(
+                            fontSize: 90,
+                            fontFamily: 'Righteous',
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
                   )
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  SizedBox(height: 20.0),
-                  Text(
-                    '${time.date} | $city ',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontFamily: 'Righteous',
-                      fontSize: 25,
-                      color: Colors.white,
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20.0),
+                    Text(
+                      '${time.date} | $city ',
+                      style: TextStyle(
+                        fontFamily: 'Righteous',
+                        fontSize: 25,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
+                    Text('$weatherDescription',
+                        style: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontSize: 25,
+                          color: Colors.black,
+                        )),
+                  ],
+                ),
               ),
             ]),
             SizedBox(
@@ -135,15 +166,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Column(
-              children: <Widget>[
-                Container(
-                  child: weatherIcon,
-                ),
-              ],
+            Container(
+              child: weatherIcon,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -151,7 +175,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 Column(
                   children: <Widget>[
                     Text(
-                      'Rain: ',
+                      'Humidity: $humidity',
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
@@ -159,15 +183,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       ),
                     ),
                     Text(
-                      'Feel: ',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                        fontFamily: 'Paytone One',
-                      ),
-                    ),
-                    Text(
-                      'Wind: ',
+                      'Wind: $windSpeed mph',
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
@@ -176,36 +192,25 @@ class _LocationScreenState extends State<LocationScreen> {
                     )
                   ],
                 ),
-                Row(
+                SizedBox(width: 20.0),
+                Column(
                   children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'UV: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontFamily: 'Luckiest Guy',
-                          ),
-                        ),
-                        Text(
-                          'HUMI: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontFamily: 'Luckiest Guy',
-                          ),
-                        ),
-                        Text(
-                          'Cloud: ',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontFamily: 'Luckiest Guy',
-                          ),
-                        ),
-                      ],
-                    )
+                    Text(
+                      'Min: $minTemp°',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontFamily: 'Paytone One',
+                      ),
+                    ),
+                    Text(
+                      'Max: $maxTemp°',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontFamily: 'Paytone One',
+                      ),
+                    ),
                   ],
                 ),
               ],
