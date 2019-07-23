@@ -54,3 +54,17 @@ flutter:
       fonts:
         - asset: fonts/Righteous-Regular.ttf
 
+    - family: Luckiest Guy
+      fonts:
+        - asset: fonts/LuckiestGuy-Regular.ttf
+
+    - family: Lobster
+      fonts:
+        - asset: fonts/Lobster-Regular.ttf
+
+    - family: Paytone One
+      fonts:
+        - asset: fonts/PaytoneOne-Regular.ttf
+
+
+

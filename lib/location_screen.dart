@@ -155,6 +155,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     ),
                     Text(
@@ -162,6 +163,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     ),
                     Text(
@@ -169,6 +171,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
+                        fontFamily: 'Paytone One',
                       ),
                     )
                   ],
@@ -182,6 +185,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                         Text(
@@ -189,6 +193,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                         Text(
@@ -196,6 +201,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           style: TextStyle(
                             fontSize: 24,
                             color: Colors.white,
+                            fontFamily: 'Luckiest Guy',
                           ),
                         ),
                       ],
