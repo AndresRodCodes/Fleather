@@ -20,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WeatherModel weatherModel = WeatherModel();
     var weatherData = await weatherModel.getWeatherData();
 
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) {
