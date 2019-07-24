@@ -19,6 +19,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getLocationData() async {
     WeatherModel weatherModel = WeatherModel();
     var weatherData = await weatherModel.getWeatherData();
+    var fiveDayData = await weatherModel.getFiveDayData();
 
     Navigator.pushReplacement(
       context,
@@ -26,6 +27,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         builder: (context) {
           return LocationScreen(
             locationWeather: weatherData,
+            locationForecast: fiveDayData,
           );
         },
       ),
