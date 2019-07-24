@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
+import 'horizontal_listview.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather, this.locationForecast});
@@ -149,33 +150,7 @@ class _LocationScreenState extends State<LocationScreen> {
             SizedBox(
               height: 10.0,
             ),
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Container(
-                  height: 150.0,
-                  child: ListView.builder(
-                      itemCount: 6,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => Card(
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    'degrees',
-                                  ),
-                                  Icon(Icons.wb_sunny),
-                                  Text('Time'),
-                                ],
-                              ),
-                            ),
-                          )),
-                ),
-              ),
-            ),
+            HorizontalList(),
             Container(
               child: weatherIcon,
             ),
