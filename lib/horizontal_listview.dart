@@ -14,11 +14,11 @@ class _HorizontalListState extends State<HorizontalList> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Forecastdata(
+          ForecastData(
             weekDay: 'Monday',
             weatherIcon: 'check',
           ),
-          Forecastdata(
+          ForecastData(
             weekDay: 'Tuesday',
             weatherIcon: 'menu',
           ),
@@ -28,11 +28,11 @@ class _HorizontalListState extends State<HorizontalList> {
   }
 }
 
-class Forecastdata extends StatelessWidget {
-  String weekDay;
-  String weatherIcon;
+class ForecastData extends StatelessWidget {
+  final String weekDay;
+  final String weatherIcon;
 
-  Forecastdata({this.weekDay, this.weatherIcon});
+  ForecastData({this.weekDay, this.weatherIcon});
 
   @override
   Widget build(BuildContext context) {

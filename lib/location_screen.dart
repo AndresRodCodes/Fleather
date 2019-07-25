@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
 import 'horizontal_listview.dart';
+import 'five_day_forecast.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather, this.locationForecast});
@@ -18,6 +18,8 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   DateAndTime time = DateAndTime();
   WeatherModel weatherModel = WeatherModel();
+  FiveDayForecast fiveDayForecast = FiveDayForecast();
+
   Timer _everySecond;
   String city;
   String weatherCondition;
@@ -66,6 +68,8 @@ class _LocationScreenState extends State<LocationScreen> {
       });
     });
     updateUI(widget.locationWeather);
+    fiveDayForecast.setFiveDayData(widget.locationForecast);
+    print(fiveDayForecast.day1Min);
   }
 
   @override
