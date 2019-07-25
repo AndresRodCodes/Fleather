@@ -15,11 +15,31 @@ class _HorizontalListState extends State<HorizontalList> {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           Forecastdata(
-            weekDay: 'Monday',
+            weekDay: 'Mon',
             weatherIcon: 'check',
           ),
           Forecastdata(
-            weekDay: 'Tuesday',
+            weekDay: 'Tues',
+            weatherIcon: 'menu',
+          ),
+          Forecastdata(
+            weekDay: 'Wed',
+            weatherIcon: 'menu',
+          ),
+          Forecastdata(
+            weekDay: 'Thurs',
+            weatherIcon: 'menu',
+          ),
+          Forecastdata(
+            weekDay: 'Fri',
+            weatherIcon: 'menu',
+          ),
+          Forecastdata(
+            weekDay: 'Sat',
+            weatherIcon: 'menu',
+          ),
+          Forecastdata(
+            weekDay: 'Sun',
             weatherIcon: 'menu',
           ),
         ],
@@ -37,12 +57,15 @@ class Forecastdata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(3.0),
       child: Container(
         width: 80,
         //color: Colors.transparent,
-        child: ListView(
+        child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+            ),
             Text(weekDay),
             Icon(Icons.wb_sunny),
           ],
