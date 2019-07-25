@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
 import 'horizontal_listview.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather, this.locationForecast});
