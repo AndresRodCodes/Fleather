@@ -7,7 +7,6 @@ const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const fiveDayWeatherUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
 class WeatherModel {
-
   Future<dynamic> getWeatherData() async {
     Location location = Location();
     await location.getCurrentLocation();
@@ -23,7 +22,8 @@ class WeatherModel {
     Location location = Location();
     await location.getCurrentLocation();
 
-    String url = '$fiveDayWeatherUrl?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=imperial';
+    String url =
+        '$fiveDayWeatherUrl?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=imperial';
     NetworkHelper networkHelper = NetworkHelper(url: url);
     var fiveDayData = await networkHelper.getData();
     return fiveDayData;
@@ -31,13 +31,13 @@ class WeatherModel {
 
   AssetImage getBackgroundImage(String weatherCondition) {
     if (weatherCondition == 'Clear') {
-      return AssetImage('images/clouds.jpg');
+      return AssetImage('images/clear.jpg');
     } else if (weatherCondition == 'Rain') {
-      return AssetImage('images/clouds.jpg');
+      return AssetImage('images/rain2.jpg');
     } else if (weatherCondition == 'Clouds') {
-      return AssetImage('images/clouds.jpg');
+      return AssetImage('images/Su.jpg');
     } else {
-      return AssetImage('images/clouds.jpg');
+      return AssetImage('images/Su.jpg');
     }
   }
 }

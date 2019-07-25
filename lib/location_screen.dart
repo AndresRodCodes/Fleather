@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'time.dart';
 import 'weather.dart';
 import 'horizontal_listview.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'five_day_forecast.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _LocationScreenState extends State<LocationScreen> {
       weatherCondition = weatherData['weather'][0]['main'];
       icon = weatherData['weather'][0]['icon'];
 
-      double temp = weatherData['main']['temp'];
+      var temp = weatherData['main']['temp'];
       temperature = temp.toStringAsFixed(0);
       humidity = weatherData['main']['humidity'].toString();
 
