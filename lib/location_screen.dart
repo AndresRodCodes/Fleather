@@ -4,7 +4,6 @@ import 'time.dart';
 import 'weather.dart';
 import 'horizontal_listview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'five_day_forecast.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather, this.locationForecast});
@@ -19,7 +18,6 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   DateAndTime time = DateAndTime();
   WeatherModel weatherModel = WeatherModel();
-  FiveDayForecast fiveDayForecast = FiveDayForecast();
 
   Timer _everySecond;
   String city;
@@ -33,7 +31,22 @@ class _LocationScreenState extends State<LocationScreen> {
   String windSpeed;
   String weatherDescription;
 
-  void updateUI(dynamic weatherData) {
+  String day1Icon;
+  Image day1WeatherIcon;
+
+  String day2Icon;
+  Image day2WeatherIcon;
+
+  String day3Icon;
+  Image day3WeatherIcon;
+
+  String day4Icon;
+  Image day4WeatherIcon;
+
+  String day5Icon;
+  Image day5WeatherIcon;
+
+  void updateUI(dynamic weatherData, dynamic forecastData) {
     setState(() {
       city = weatherData['name'];
       weatherCondition = weatherData['weather'][0]['main'];
@@ -56,6 +69,22 @@ class _LocationScreenState extends State<LocationScreen> {
     });
     weatherIcon =
         Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
+
+    day1Icon = forecastData['list'][0]['weather'][0]['icon'];
+    day1WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day1Icon@2x.png');
+
+    day2Icon = forecastData['list'][6]['weather'][0]['icon'];
+    day2WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day2Icon@2x.png');
+
+    day3Icon = forecastData['list'][14]['weather'][0]['icon'];
+    day3WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day3Icon@2x.png');
+
+    day4Icon = forecastData['list'][22]['weather'][0]['icon'];
+    day4WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day4Icon@2x.png');
+
+    day5Icon = forecastData['list'][30]['weather'][0]['icon'];
+    day5WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day5Icon@2x.png');
+
   }
 
   @override
@@ -68,9 +97,7 @@ class _LocationScreenState extends State<LocationScreen> {
         time.getCurrentTimeAndDate();
       });
     });
-    updateUI(widget.locationWeather);
-    fiveDayForecast.setFiveDayData(widget.locationForecast);
-    print(fiveDayForecast.day1Min);
+    updateUI(widget.locationWeather, widget.locationForecast);
   }
 
   @override
@@ -155,7 +182,35 @@ class _LocationScreenState extends State<LocationScreen> {
             SizedBox(
               height: 10.0,
             ),
-            HorizontalList(),
+        Container(
+          //color: Colors.white,
+          height: 120,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              ForecastData(
+                weekDay: 'Mon',
+                image: day1WeatherIcon,
+              ),
+              ForecastData(
+                weekDay: 'Tues',
+                image: day2WeatherIcon,
+              ),
+              ForecastData(
+                weekDay: 'Wed',
+                image: day3WeatherIcon,
+              ),
+              ForecastData(
+                weekDay: 'Thurs',
+                image: day4WeatherIcon,
+              ),
+              ForecastData(
+                weekDay: 'Fri',
+                image: day5WeatherIcon,
+              ),
+            ],
+          ),
+        ),
             Container(
               child: weatherIcon,
             ),
