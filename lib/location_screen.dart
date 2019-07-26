@@ -198,6 +198,20 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 60),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Align(
+                        child: Icon(
+                          FontAwesomeIcons.locationArrow,
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      onPressed: null,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
