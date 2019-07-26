@@ -99,7 +99,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           '${time.time}',
                           style: TextStyle(
                             fontFamily: 'Righteous',
-                            fontSize: 50,
+                            fontSize: 45,
                             color: Colors.white,
                           ),
                         ),
@@ -112,9 +112,10 @@ class _LocationScreenState extends State<LocationScreen> {
                             child: Text(
                               '$temperature°',
                               style: TextStyle(
-                                fontSize: 90,
+                                fontSize: 80,
                                 fontFamily: 'Righteous',
                                 fontWeight: FontWeight.bold,
+                                color: Colors.yellow.shade200,
                               ),
                             ),
                           ),
