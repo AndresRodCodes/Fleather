@@ -31,13 +31,13 @@ class WeatherModel {
 
   AssetImage getBackgroundImage(String weatherCondition) {
     if (weatherCondition == 'Clear') {
-      return AssetImage('images/clear.jpg');
+      return AssetImage('images/Sun.jpg');
     } else if (weatherCondition == 'Rain') {
       return AssetImage('images/rain2.jpg');
     } else if (weatherCondition == 'Clouds') {
-      return AssetImage('images/Su.jpg');
+      return AssetImage('images/Sun.jpg');
     } else {
-      return AssetImage('images/Su.jpg');
+      return AssetImage('images/clouds.jpg');
     }
   }
 }
