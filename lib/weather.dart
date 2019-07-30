@@ -33,11 +33,11 @@ class WeatherModel {
     if (weatherCondition == 'Clear') {
       return AssetImage('images/Sun.jpg');
     } else if (weatherCondition == 'Rain') {
-      return AssetImage('images/rain2.jpg');
+      return AssetImage('images/rain.jpg');
     } else if (weatherCondition == 'Clouds') {
-      return AssetImage('images/Sun.jpg');
-    } else {
       return AssetImage('images/clouds.jpg');
+    } else {
+      return AssetImage('images/Sun.jpg');
     }
   }
 }

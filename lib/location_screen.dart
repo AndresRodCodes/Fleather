@@ -96,7 +96,6 @@ class _LocationScreenState extends State<LocationScreen> {
     super.initState();
 
     time.setListDays(widget.locationForecast);
-    //print(time.day1);
 
     time.getCurrentTimeAndDate();
     _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
@@ -260,15 +259,24 @@ class _LocationScreenState extends State<LocationScreen> {
                 ),
                 SizedBox(height: 60),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     IconButton(
+                      iconSize: 30.0,
                       icon: Align(
                         child: Icon(
                           FontAwesomeIcons.locationArrow,
-                          color: Colors.yellow,
+                          color: Colors.blue,
                         ),
                       ),
-                      onPressed: null,
+                      onPressed: () async {
+                        var weatherData = await weatherModel.getWeatherData();
+                        var fiveDayData = await weatherModel.getFiveDayData();
+                        updateUI(weatherData, fiveDayData);
+                      },
+                    ),
+                    SizedBox(
+                      width: 50.0,
                     ),
                   ],
                 ),
