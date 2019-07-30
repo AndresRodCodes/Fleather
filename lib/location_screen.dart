@@ -71,25 +71,32 @@ class _LocationScreenState extends State<LocationScreen> {
         Image.network('https://openweathermap.org/img/wn/$icon@2x.png');
 
     day1Icon = forecastData['list'][0]['weather'][0]['icon'];
-    day1WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day1Icon@2x.png');
+    day1WeatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$day1Icon@2x.png');
 
     day2Icon = forecastData['list'][6]['weather'][0]['icon'];
-    day2WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day2Icon@2x.png');
+    day2WeatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$day2Icon@2x.png');
 
     day3Icon = forecastData['list'][14]['weather'][0]['icon'];
-    day3WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day3Icon@2x.png');
+    day3WeatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$day3Icon@2x.png');
 
     day4Icon = forecastData['list'][22]['weather'][0]['icon'];
-    day4WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day4Icon@2x.png');
+    day4WeatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$day4Icon@2x.png');
 
     day5Icon = forecastData['list'][30]['weather'][0]['icon'];
-    day5WeatherIcon = Image.network('https://openweathermap.org/img/wn/$day5Icon@2x.png');
-
+    day5WeatherIcon =
+        Image.network('https://openweathermap.org/img/wn/$day5Icon@2x.png');
   }
 
   @override
   void initState() {
     super.initState();
+
+    time.setListDays(widget.locationForecast);
+    //print(time.day1);
 
     time.getCurrentTimeAndDate();
     _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
@@ -112,8 +119,8 @@ class _LocationScreenState extends State<LocationScreen> {
                   fit: BoxFit.cover),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 100.0),
                 Column(children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,7 +147,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 fontSize: 80,
                                 fontFamily: 'Righteous',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.yellow.shade200,
+                                color: Colors.yellow.shade300,
                               ),
                             ),
                           ),
@@ -151,7 +158,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   Center(
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 40.0),
                         Text(
                           '${time.date} | $city ',
                           style: TextStyle(
@@ -173,35 +180,35 @@ class _LocationScreenState extends State<LocationScreen> {
                 SizedBox(
                   height: 10.0,
                 ),
-            Container(
-              //color: Colors.white,
-              height: 120,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  ForecastData(
-                    weekDay: 'Mon',
-                    image: day1WeatherIcon,
+                Container(
+                  //color: Colors.white,
+                  height: 120,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      ForecastData(
+                        weekDay: '${time.day1}',
+                        image: day1WeatherIcon,
+                      ),
+                      ForecastData(
+                        weekDay: '${time.day2}',
+                        image: day2WeatherIcon,
+                      ),
+                      ForecastData(
+                        weekDay: '${time.day3}',
+                        image: day3WeatherIcon,
+                      ),
+                      ForecastData(
+                        weekDay: '${time.day4}',
+                        image: day4WeatherIcon,
+                      ),
+                      ForecastData(
+                        weekDay: '${time.day5}',
+                        image: day5WeatherIcon,
+                      ),
+                    ],
                   ),
-                  ForecastData(
-                    weekDay: 'Tues',
-                    image: day2WeatherIcon,
-                  ),
-                  ForecastData(
-                    weekDay: 'Wed',
-                    image: day3WeatherIcon,
-                  ),
-                  ForecastData(
-                    weekDay: 'Thurs',
-                    image: day4WeatherIcon,
-                  ),
-                  ForecastData(
-                    weekDay: 'Fri',
-                    image: day5WeatherIcon,
-                  ),
-                ],
-              ),
-            ),
+                ),
                 Container(
                   child: weatherIcon,
                 ),
@@ -266,7 +273,6 @@ class _LocationScreenState extends State<LocationScreen> {
                 style: TextStyle(
                   fontFamily: 'Paytone One',
                   fontSize: 35,
-                  fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
