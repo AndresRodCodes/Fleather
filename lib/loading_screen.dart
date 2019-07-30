@@ -1,7 +1,10 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'weather.dart';
 import 'location_screen.dart';
+import 'package:location_permissions/location_permissions.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -9,10 +12,31 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  PermissionStatus permissionStatus;
+
   @override
   void initState() {
     super.initState();
-    getLocationData();
+
+    checkPermissions();
+  }
+
+  void checkPermissions() async {
+    permissionStatus = await LocationPermissions().checkPermissionStatus();
+
+    if (permissionStatus == PermissionStatus.granted) {
+      getLocationData();
+    }
+    else {
+      permissionStatus = await LocationPermissions().requestPermissions();
+
+      if (permissionStatus == PermissionStatus.granted) {
+        getLocationData();
+      }
+      else {
+        exit(0);
+      }
+    }
   }
 
   void getLocationData() async {
