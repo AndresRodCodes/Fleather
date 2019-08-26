@@ -261,19 +261,22 @@ class _LocationScreenState extends State<LocationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    IconButton(
-                      iconSize: 30.0,
-                      icon: Align(
-                        child: Icon(
-                          FontAwesomeIcons.locationArrow,
-                          color: Colors.blue,
+                    Material(
+                      color: Colors.transparent,
+                      child: IconButton(
+                        iconSize: 30.0,
+                        icon: Align(
+                          child: Icon(
+                            FontAwesomeIcons.searchLocation,
+                            color: Colors.blue,
+                          ),
                         ),
+                        onPressed: () async {
+                          var weatherData = await weatherModel.getWeatherData();
+                          var fiveDayData = await weatherModel.getFiveDayData();
+                          updateUI(weatherData, fiveDayData);
+                        },
                       ),
-                      onPressed: () async {
-                        var weatherData = await weatherModel.getWeatherData();
-                        var fiveDayData = await weatherModel.getFiveDayData();
-                        updateUI(weatherData, fiveDayData);
-                      },
                     ),
                     SizedBox(
                       width: 50.0,
